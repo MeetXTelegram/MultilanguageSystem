@@ -15,7 +15,7 @@ include_directories(json/include)
 include_directories(Types)
 include_directories(include)
 
-add_library(MultilanguageSystem SHARED
+add_library(MultilanguageSystem STATIC
     include/MLSystem.hpp
     src/getReplic.cpp
 )
@@ -23,10 +23,5 @@ add_library(MultilanguageSystem SHARED
 install(TARGETS MultilanguageSystem
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-
-if (ANDROID)
-    message(NOTICE "Compilation on Android detected")
-    target_compile_definitions(MultilanguageSystem ANDROID_USERSPACE)
-endif()
 
 target_link_libraries(MultilanguageSystem PRIVATE nlohmann_json::nlohmann_json spdlog::spdlog )
