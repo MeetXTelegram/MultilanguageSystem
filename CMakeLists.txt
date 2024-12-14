@@ -20,8 +20,9 @@ add_library(MultilanguageSystem STATIC
     src/getReplic.cpp
 )
 
+target_link_libraries(MultilanguageSystem PRIVATE nlohmann_json::nlohmann_json spdlog::spdlog )
+
 install(TARGETS MultilanguageSystem
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
-
-target_link_libraries(MultilanguageSystem PRIVATE nlohmann_json::nlohmann_json spdlog::spdlog )
+install(FILES include/MLSystem.hpp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/MLSystem)
